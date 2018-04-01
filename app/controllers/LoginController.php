@@ -20,6 +20,7 @@ class LoginController
 
       $_SESSION['user'] = $user;
       $_SESSION['loggedin'] = True;
+      
       return redirect('');
     }
     else

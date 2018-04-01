@@ -34,3 +34,8 @@ function redirect($path)
 {
     header("Location: /{$path}");
 }
+
+function dd($var)
+{
+  die(var_dump($var));
+}
