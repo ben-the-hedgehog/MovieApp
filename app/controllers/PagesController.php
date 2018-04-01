@@ -35,10 +35,25 @@ class PagesController
     {
       $movies_now_playing[] = App::get('database')->get('movie', ['id'=>$np->movie]);
     }
-    
+
     echo App::get('twig')->render('now_playing.html', [
       'complex'=>$complex[0],
       'movies_now_playing'=>$movies_now_playing
     ]);
+  }
+
+  public function viewShowtimes()
+  {
+    $query = Request::query();
+    //complex, movie ids
+    $sql = "SELECT * FROM (
+            (SELECT * FROM theatre WHERE complex = :complex) AS T
+            INNER JOIN
+            (SELECT * FROM showing WHERE movie = :movie) AS S
+            )";
+
+    $params = ['complex'=>$query['complex'], 'movie'=>$query['movie']];
+    $showtimes = App::get('database')->raw($sql, $params);
+    dd($showtimes);
   }
 }

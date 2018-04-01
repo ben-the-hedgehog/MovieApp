@@ -99,11 +99,11 @@ class QueryBuilder
     return $statement->fetch(PDO::FETCH_OBJ);
   }
 
-  public function raw($query)
+  public function raw($query, $params=NULL)
   {
     try {
         $statement = $this->pdo->prepare($query);
-        $statement->execute();
+        $statement->execute($params);
     } catch (Exception $e) {
         die($e->getMessage());
     }
