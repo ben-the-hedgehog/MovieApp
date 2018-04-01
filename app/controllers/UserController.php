@@ -10,10 +10,10 @@ class UserController
   {
     if(Request::method() === 'POST')
     {
-      $account_no = $_POST['account_no'];
+      $account_no = $_POST['email'];
       $password = $_POST['password'];
 
-      $user = App::get('database')->filter('user', compact('account_no', 'password'));
+      $user = App::get('database')->filter('user', compact('email', 'password'));
       if( $user === [] )
       {
         return redirect('login');
