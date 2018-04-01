@@ -2,23 +2,25 @@
 
 namespace App\Controllers;
 
+use \App\Core\App;
+
 class PagesController
 {
   public function home()
   {
-    return render('index');
+    echo App::get('twig')->render('index.tmpl.php');
   }
 
   public function about()
   {
     $companyName = 'TOPKEK';
 
-    return render('about', compact('companyName'));
+    echo App::get('twig')->render('about', compact('companyName'));
   }
 
   public function contact()
   {
-    return render('contact');
+    echo App::get('twig')->render('contact');
   }
 
 

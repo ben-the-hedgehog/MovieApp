@@ -14,13 +14,11 @@ App::bind('database', new QueryBuilder(
   )
 ));
 
-# Helper Functions
-function render($name, $data=[])
-{
-    extract($data);
+# Twig setup
+$loader = new Twig_Loader_Filesystem('app/templates/');
+App::bind('twig', new Twig_Environment($loader));
 
-  return require App::get('tmpl_dir').'/'.$name.'.tmpl.php';
-}
+# Helper Functions
 
 function formatConditional($conditions)
 {
