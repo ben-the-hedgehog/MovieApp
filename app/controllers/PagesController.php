@@ -8,7 +8,7 @@ class PagesController
 {
   public function home()
   {
-    echo App::get('twig')->render('index.tmpl.php');
+    echo App::get('twig')->render('index.html');
   }
 
   public function about()

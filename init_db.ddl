@@ -67,11 +67,11 @@ CREATE TABLE actor(
 );
 
 CREATE TABLE user(
-	account_no INT,
+	account_no INT AUTO_INCREMENT,
 	password VARCHAR(20) NOT NULL,
 	fname VARCHAR(20) NOT NULL,
 	lname VARCHAR(20) NOT NULL,
-	user_group CHAR NOT NULL,
+	is_admin BOOLEAN NOT NULL DEFAULT 0,
 	email VARCHAR(20) NOT NULL,
 	cc_number VARCHAR(19),
 	cc_expiry VARCHAR(4),

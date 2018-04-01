@@ -6,12 +6,14 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Controllers\\LoginController' => $baseDir . '/app/controllers/LoginController.php',
     'App\\Controllers\\PagesController' => $baseDir . '/app/controllers/PagesController.php',
     'App\\Core\\App' => $baseDir . '/core/App.php',
     'App\\Core\\Database\\Connection' => $baseDir . '/core/database/Connection.php',
     'App\\Core\\Database\\QueryBuilder' => $baseDir . '/core/database/QueryBuilder.php',
     'App\\Core\\Request' => $baseDir . '/core/Request.php',
     'App\\Core\\Router' => $baseDir . '/core/Router.php',
+    'Authenticator' => $baseDir . '/core/Authenticator.php',
     'CallableTestClass' => $vendorDir . '/twig/twig/test/Twig/Tests/Node/Expression/CallTest.php',
     'ComposerAutoloaderInit835005aaecd9045a325f50d278e4487a' => $vendorDir . '/composer/autoload_real.php',
     'Composer\\Autoload\\ClassLoader' => $vendorDir . '/composer/ClassLoader.php',
