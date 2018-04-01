@@ -20,7 +20,6 @@ class UserController
       }
 
       $_SESSION['user'] = $user;
-      $_SESSION['loggedin'] = True;
 
       return redirect('');
     }
@@ -33,7 +32,6 @@ class UserController
   public function logout()
   {
     $_SESSION['user'] = NULL;
-    $_SESSION['loggedin'] = False;
     redirect('');
   }
 

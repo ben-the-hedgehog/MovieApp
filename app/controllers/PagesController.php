@@ -8,8 +8,8 @@ class PagesController
 {
   public function home()
   {
+    $loggedin = isset($_SESSION['user']);
     $user = $_SESSION['user'];
-    $loggedin = $_SESSION['loggedin'];
 
     echo App::get('twig')->render('index.html', compact('user', 'loggedin'));
   }
