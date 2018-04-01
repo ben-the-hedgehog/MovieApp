@@ -18,4 +18,27 @@ class PagesController
   {
     echo App::get('twig')->render('create_user.html');
   }
+
+  public function searchNowPlaying()
+  {
+    $query = Request::query();
+
+    $complex = App::get('database')->filter('complex', [
+      'city'=>$query['city'],
+      'name'=>$query['complex']
+    ]);
+
+    $now_playing = App::get('database')->filter('now_playing', ['complex'=>$complex[0]->id]);
+    $movies_now_playing = [];
+
+    foreach($now_playing as $np)
+    {
+      $movies_now_playing[] = App::get('database')->get('movie', ['id'=>$np->movie]);
+    }
+    
+    echo App::get('twig')->render('now_playing.html', [
+      'complex'=>$complex[0],
+      'movies_now_playing'=>$movies_now_playing
+    ]);
+  }
 }

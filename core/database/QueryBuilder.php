@@ -78,4 +78,35 @@ class QueryBuilder
 
     return $statement->fetchAll(PDO::FETCH_CLASS);
   }
+
+  public function get($table, $conditions)
+  {
+    $conditionString = formatConditional($conditions);
+
+    $query = sprintf(
+        "select * from %s where(%s)",
+        $table,
+        $conditionString
+    );
+
+    try {
+        $statement = $this->pdo->prepare($query);
+        $statement->execute($conditions);
+    } catch (Exception $e) {
+        die($e->getMessage());
+    }
+
+    return $statement->fetch(PDO::FETCH_OBJ);
+  }
+
+  public function raw($query)
+  {
+    try {
+        $statement = $this->pdo->prepare($query);
+        $statement->execute();
+    } catch (Exception $e) {
+        die($e->getMessage());
+    }
+    return $statement->fetchAll(PDO::FETCH_CLASS);
+  }
 }

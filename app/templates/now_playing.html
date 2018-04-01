@@ -1,0 +1,33 @@
+{% extends 'partials/base.html' %}
+
+{% block title %}
+  Now Playing at {{ complex.name }}
+{% endblock %}
+
+{% block content %}
+
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Now Playing at {{ complex.name }} </h1>
+    <hr class="my-4">
+    <div class="row">
+      {% for movie in movies_now_playing %}
+        <div class="col-md-3 mr-sm-4">
+          <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">{{ movie.title }}</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <form method="get" action="/showtimes">
+                <input type="hidden" name="complex" value="{{ complex.id }}">
+                <input type="hidden" name="movie" value="{{ movie.id }}">
+                <button type="submit" class="btn btn-warning">See Showtimes</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% endblock %}
