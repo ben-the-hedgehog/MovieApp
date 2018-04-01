@@ -14,4 +14,8 @@ class PagesController
     echo App::get('twig')->render('index.html', compact('user', 'loggedin'));
   }
 
+  public function createAccount()
+  {
+    echo App::get('twig')->render('create_user.html');
+  }
 }

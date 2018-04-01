@@ -1,6 +1,8 @@
 <?php
 
 $router->get('', "PagesController@home");
-$router->get('login', 'LoginController@login');
-$router->post('login', 'LoginController@login');
-$router->post('logout', 'LoginController@logout');
+$router->get('login', 'UserController@login');
+$router->post('login', 'UserController@login');
+$router->post('logout', 'UserController@logout');
+$router->get('user/create', 'PagesController@createAccount');
+$router->post('user/create', 'UserController@createAccount');

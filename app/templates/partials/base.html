@@ -21,6 +21,7 @@
         <div class="nav navbar-right">
           {% if loggedin %}
             <form action="/logout" method="post">
+              <label class="text-light"> Hi, {{ user[0].fname }} </label>
               <button class="btn btn-primary" type="submit">Logout</button>
             </form>
           {% else %}

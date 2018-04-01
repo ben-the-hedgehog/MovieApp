@@ -4,7 +4,7 @@ namespace App\Controllers;
 use \App\Core\{Request, App};
 use \App\Core\Session\LoginSession;
 
-class LoginController
+class UserController
 {
   public function login()
   {
@@ -35,5 +35,25 @@ class LoginController
     $_SESSION['user'] = NULL;
     $_SESSION['loggedin'] = False;
     redirect('');
+  }
+
+  public function createAccount()
+  {
+    $email = htmlspecialchars($_POST['email']);
+    $password = htmlspecialchars($_POST['password']);
+    $fname = htmlspecialchars($_POST['fname']);
+    $lname = htmlspecialchars($_POST['lname']);
+    $is_admin = 0;
+    $cc_number = htmlspecialchars($_POST['cc_number']);
+    $cc_expiry = htmlspecialchars($_POST['cc_expiry']);
+    if(App::get('database')->filter('user', compact('email')) !== [])
+    {
+      return redirect('user/create');
+    }
+    App::get('database')->insert('user', compact(
+      'password', 'fname', 'lname', 'is_admin', 'email', 'cc_number', 'cc_expiry'
+    ));
+
+    return redirect('');
   }
 }
