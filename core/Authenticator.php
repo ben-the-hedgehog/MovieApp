@@ -11,5 +11,9 @@ class Authenticator
 
   }
 
-  
+  // public static function fetchUser($username, $password)
+  // {
+  //   $user = App::get('database')->filter('user', compact('username', 'password'));
+  // }
+
 }
