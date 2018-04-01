@@ -2,6 +2,7 @@
 namespace App\Controllers;
 
 use \App\Core\{Request, App};
+use \App\Core\Session\LoginSession;
 
 class LoginController
 {
@@ -31,7 +32,8 @@ class LoginController
 
   public function logout()
   {
-    session_unset();
+    $_SESSION['user'] = NULL;
+    $_SESSION['loggedin'] = False;
     redirect('');
   }
 }

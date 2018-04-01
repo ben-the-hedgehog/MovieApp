@@ -13,5 +13,5 @@ class PagesController
 
     echo App::get('twig')->render('index.html', compact('user', 'loggedin'));
   }
-  
+
 }

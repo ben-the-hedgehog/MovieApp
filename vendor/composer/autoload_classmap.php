@@ -13,7 +13,6 @@ return array(
     'App\\Core\\Database\\QueryBuilder' => $baseDir . '/core/database/QueryBuilder.php',
     'App\\Core\\Request' => $baseDir . '/core/Request.php',
     'App\\Core\\Router' => $baseDir . '/core/Router.php',
-    'Authenticator' => $baseDir . '/core/Authenticator.php',
     'CallableTestClass' => $vendorDir . '/twig/twig/test/Twig/Tests/Node/Expression/CallTest.php',
     'ComposerAutoloaderInit835005aaecd9045a325f50d278e4487a' => $vendorDir . '/composer/autoload_real.php',
     'Composer\\Autoload\\ClassLoader' => $vendorDir . '/composer/ClassLoader.php',
