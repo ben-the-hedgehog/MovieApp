@@ -6,6 +6,4 @@
 
   session_start();
 
-  $_SESSION['loggedin'] = 0;
-
   Router::load('app/routes.php')->direct(Request::uri(), Request::method());

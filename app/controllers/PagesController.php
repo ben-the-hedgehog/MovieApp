@@ -8,20 +8,10 @@ class PagesController
 {
   public function home()
   {
-    echo App::get('twig')->render('index.html');
+    $user = $_SESSION['user'];
+    $loggedin = $_SESSION['loggedin'];
+
+    echo App::get('twig')->render('index.html', compact('user', 'loggedin'));
   }
-
-  public function about()
-  {
-    $companyName = 'TOPKEK';
-
-    echo App::get('twig')->render('about', compact('companyName'));
-  }
-
-  public function contact()
-  {
-    echo App::get('twig')->render('contact');
-  }
-
-
+  
 }

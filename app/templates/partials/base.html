@@ -18,13 +18,15 @@
           <a class="navbar-brand" href="/">MovieApp</a>
         </div>
 
-        <ul class="nav navbar-right">
-          {% if user.is_authenticated %}
-            <li> <a class="btn btn-primary" href="#">Logout</a> </li>
+        <div class="nav navbar-right">
+          {% if loggedin %}
+            <form action="/logout" method="post">
+              <button class="btn btn-primary" type="submit">Logout</button>
+            </form>
           {% else %}
             <li> <a class="btn btn-primary" href="/login">Login</a> </li>
           {% endif %}
-        </ul>
+        </div>
       </div>
     </nav>
 

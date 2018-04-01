@@ -20,12 +20,18 @@ class LoginController
 
       $_SESSION['user'] = $user;
       $_SESSION['loggedin'] = True;
-      
+
       return redirect('');
     }
     else
     {
       echo App::get('twig')->render('login.html');
     }
+  }
+
+  public function logout()
+  {
+    session_unset();
+    redirect('');
   }
 }
