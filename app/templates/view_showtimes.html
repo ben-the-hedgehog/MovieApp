@@ -15,12 +15,15 @@
     <div class="container">
       <ul class="list-group">
         {% for showtime in showtimes %}
-        <li class="list-group-item d-flex justify-content-between align-items-center">
+        <form class="list-group-item d-flex justify-content-between align-items-center"
+          method="get" action="/showtimes/book">
+          <input type="hidden" name="showtime" value="{{ showtime.id }}">
           <time> {{ showtime.start_time }} </time>
           <label class="text-justify"> Theatre {{ showtime.theatre_num }} </label>
           <label class="text-justify>"> Screen size: {{ showtime.screen_size }} </label>
           <span class="badge badge-primary badge-pill">{{ showtime.seats_left }}</span>
-        </li>
+          <button type="submit" class="btn btn-warning">Book</button>
+        </form>
         {% endfor %}
       </ul>
     </div>

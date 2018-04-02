@@ -1,0 +1,49 @@
+{% extends 'partials/base.html' %}
+
+{% block title %}
+  Confirm Booking
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h1 class="display-4">Confirm Your Booking</h1>
+  <hr class="my-4">
+</div>
+
+<div class="jumbotron">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="list-group list-group-flush">
+          <li class="list-group-item">{{ showtime.movie.title }}</li>
+          <li class="list-group-item">{{ showtime.start_time }}</li>
+          <li class="list-group-item">{{ showtime.theatre.complex.name }}</li>
+          <li class="list-group-item">{{ showtime.theatre.complex.city }}</li>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">
+            Confirm
+          </div>
+          <div class="card-body">
+            <form class="list-group-item" method="post" action="/showtimes/book">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">Seats</span>
+                </div>
+                <input type="text" name="num_seats" class="form-control">
+                <div class="input-group-append">
+                  <span class="input-group-text"> x $10.00 </span>
+                </div>
+              </div>
+              <input type="hidden" name="showtime" value="{{ showtime.id }}">
+              <button class="btn btn-primary" type="submit">Confirm</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

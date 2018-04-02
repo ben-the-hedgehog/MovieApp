@@ -68,4 +68,31 @@ class PagesController
       compact('showtimes', 'complex', 'movie', 'loggedin', 'user'
     ));
   }
+
+  public function bookShowtime()
+  {
+    //if not logged in, send away
+    $loggedin = isset($_SESSION['user']);
+    if(! $loggedin)
+    {
+      return redirect('');
+    }
+    $user = $_SESSION['user'];
+    //if showtime has no seats left, send away
+    $showtime_id = Request::query()['showtime'];
+    $showtime = App::get('database')->get('showing', ['id'=>$showtime_id]);
+    $showtime->movie = App::get('database')->get('movie', ['id'=>$showtime->movie]);
+    $showtime->theatre = App::get('database')->get('theatre', ['id'=>$showtime->theatre]);
+    $showtime->theatre->complex = App::get('database')->get('complex', ['id'=>$showtime->theatre->complex]);
+
+    if((int)$showtime->seats_left < 1)
+    {
+      return redirect('');
+    }
+
+    echo App::get('twig')->render(
+      'booking_confirmation.html',
+      compact('user', 'loggedin', 'showtime')
+    );
+  }
 }

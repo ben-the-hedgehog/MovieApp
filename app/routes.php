@@ -8,3 +8,4 @@ $router->get('user/create', 'PagesController@createAccount');
 $router->post('user/create', 'UserController@createAccount');
 $router->get('showtimes/search', 'PagesController@searchNowPlaying');
 $router->get('showtimes/view', 'PagesController@viewShowtimes');
+$router->get('showtimes/book', 'PagesController@bookShowtime');
