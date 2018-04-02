@@ -81,7 +81,7 @@ CREATE TABLE now_playing(
 	FOREIGN KEY(movie) REFERENCES movie(id)
 );
 
-CREATE TABLE showing(
+CREATE TABLE showtime(
 	id INT AUTO_INCREMENT,
 	theatre INT,
 	movie INT,
@@ -102,7 +102,7 @@ CREATE TABLE stars_in(
 	FOREIGN KEY(movie) REFERENCES movie(id)
 );
 
-CREATE TABLE reviews(
+CREATE TABLE review(
 	user INT,
 	movie INT,
 	rating INT NOT NULL,
@@ -114,12 +114,12 @@ CREATE TABLE reviews(
 	FOREIGN KEY(movie) REFERENCES movie(id)
 );
 
-CREATE TABLE reserves(
+CREATE TABLE booking(
 	user INT,
-	showing INT,
+	showtime INT,
 	num_seats INT NOT NULL,
 
-	PRIMARY KEY(user, showing),
+	PRIMARY KEY(user, showtime),
 	FOREIGN KEY(user) REFERENCES user(account_no),
-	FOREIGN KEY(showing) REFERENCES showing(id)
+	FOREIGN KEY(showtime) REFERENCES showtime(id)
 );

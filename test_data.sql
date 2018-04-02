@@ -34,17 +34,17 @@ insert into theatre(complex, theatre_num, screen_size, num_seats)
 insert into theatre(complex, theatre_num, screen_size, num_seats)
   values(3, 7, 'L', 100);
 
-insert into showing(movie, theatre, start_time, seats_left)
+insert into showtime(movie, theatre, start_time, seats_left)
   values(1, 1, "1000-01-01 00:00:00", 100);
-insert into showing(movie, theatre, start_time, seats_left)
+insert into showtime(movie, theatre, start_time, seats_left)
   values(1, 2, "1000-01-01 00:00:00", 100);
-insert into showing(movie, theatre, start_time, seats_left)
+insert into showtime(movie, theatre, start_time, seats_left)
   values(2, 4, "1000-01-01 00:00:00", 100);
-insert into showing(movie, theatre, start_time, seats_left)
+insert into showtime(movie, theatre, start_time, seats_left)
   values(3, 3, "1000-01-01 00:00:00", 100);
-insert into showing(movie, theatre, start_time, seats_left)
+insert into showtime(movie, theatre, start_time, seats_left)
   values(4, 1, "1000-01-01 00:00:00", 100);
-insert into showing(movie, theatre, start_time, seats_left)
+insert into showtime(movie, theatre, start_time, seats_left)
   values(1, 3, "1000-01-01 00:00:00", 100);
 
 insert into now_playing(complex, movie, start_date, end_date)

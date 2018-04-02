@@ -12,10 +12,20 @@
           <a class="navbar-brand" href="/">MovieApp</a>
         </div>
 
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            {% if loggedin %}
+            <li class="nav-item active">
+              <a class="nav-link" href="/bookings/mybookings">My Bookings <span class="sr-only">(current)</span></a>
+            </li>
+            {% endif %}
+          </ul>
+        </div>
+
         <div class="nav navbar-right">
           {% if loggedin %}
             <form action="/logout" method="post">
-              <label class="text-light"> Hi, {{ user[0].fname }} </label>
+              <label class="text-light"> Hi, {{ user.fname }} </label>
               <button class="btn btn-primary" type="submit">Logout</button>
             </form>
           {% else %}

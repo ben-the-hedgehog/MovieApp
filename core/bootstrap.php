@@ -35,6 +35,17 @@ function redirect($path)
     header("Location: /{$path}");
 }
 
+function redirectIfNotLoggedin($path)
+{
+    //if not loggedin, send away
+    $loggedin = isset($_SESSION['user']);
+    if(! $loggedin)
+    {
+      return redirect($path);
+    }
+    return $loggedin;
+}
+
 function dd($var)
 {
   die(var_dump($var));

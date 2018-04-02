@@ -51,7 +51,7 @@ class PagesController
     $sql = "SELECT * FROM (
             (SELECT * FROM theatre WHERE complex = :complex) AS T
             INNER JOIN
-            (SELECT * FROM showing WHERE movie = :movie) AS S
+            (SELECT * FROM showtime WHERE movie = :movie) AS S
             )";
 
     $params = ['complex'=>$query['complex'], 'movie'=>$query['movie']];
@@ -80,7 +80,7 @@ class PagesController
     $user = $_SESSION['user'];
     //if showtime has no seats left, send away
     $showtime_id = Request::query()['showtime'];
-    $showtime = App::get('database')->get('showing', ['id'=>$showtime_id]);
+    $showtime = App::get('database')->get('showtime', ['id'=>$showtime_id]);
     $showtime->movie = App::get('database')->get('movie', ['id'=>$showtime->movie]);
     $showtime->theatre = App::get('database')->get('theatre', ['id'=>$showtime->theatre]);
     $showtime->theatre->complex = App::get('database')->get('complex', ['id'=>$showtime->theatre->complex]);
