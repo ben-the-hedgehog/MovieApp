@@ -99,6 +99,29 @@ class QueryBuilder
     return $statement->fetch(PDO::FETCH_OBJ);
   }
 
+  public function update($table, $values, $conditions)
+  {
+    $conditionString = formatConditional($conditions);
+    $setValueString = formatConditional($values);
+
+    $query = sprintf(
+      "update %s set %s where %s",
+      $table,
+      $setValueString,
+      $conditionString
+    );
+
+    //never have overlapping attributes in values and conditions
+    $merged = $values + $conditions;
+
+    try {
+        $statement = $this->pdo->prepare($query);
+        $statement->execute($merged);
+    } catch (Exception $e) {
+        die($e->getMessage());
+    }
+  }
+
   public function raw($query, $params=NULL)
   {
     try {

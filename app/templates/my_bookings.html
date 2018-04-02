@@ -16,7 +16,7 @@
     <ul class="list-group">
       {% for booking in bookings %}
       <form class="list-group-item d-flex justify-content-between align-items-center"
-        method="post" action="bookings/cancel">
+        method="post" action="/bookings/cancel">
         <input type="hidden" name="booking_user" value="{{ booking.user.account_no }}">
         <input type="hidden" name="booking_showtime" value="{{ booking.showtime.id }}">
         <label class="text-justify"> {{ booking.showtime.movie.title }} </label>

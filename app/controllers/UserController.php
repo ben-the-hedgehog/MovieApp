@@ -54,4 +54,12 @@ class UserController
 
     return redirect('');
   }
+
+  public function viewProfile()
+  {
+    $loggedin = redirectIfNotLoggedin('');
+    $user = $_SESSION['user'];
+
+    echo App::get('twig')->render('user_profile.html', compact('loggedin', 'user'));
+  }
 }

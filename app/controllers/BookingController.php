@@ -42,4 +42,14 @@ class BookingController
 
     echo App::get('twig')->render('my_bookings.html', compact('loggedin', 'user', 'bookings'));
   }
+
+  public function cancelBooking()
+  {
+    $loggedin = redirectIfNotLoggedin('');
+    $user = $_SESSION['user'];
+    $showtime_id = $_POST['booking_showtime'];
+
+    App::get('database')->delete('booking', ['user'=>$user->account_no, 'showtime'=>$showtime_id]);
+    redirect('bookings/mybookings');
+  }
 }
