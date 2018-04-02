@@ -81,6 +81,9 @@ class UserController
       ['account_no'=>$user->account_no]
     );
 
+    $user = App::get('database')->get('user', ['account_no'=>$user->account_no]);
+    $_SESSION['user'] = $user;
+
     redirect('user/profile');
   }
 }

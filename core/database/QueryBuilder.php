@@ -112,7 +112,6 @@ class QueryBuilder
     );
     //never have overlapping attributes in values and conditions
     $merged = $values + $conditions;
-    dd($merged);
     try {
         $statement = $this->pdo->prepare($query);
         $statement->execute($merged);
