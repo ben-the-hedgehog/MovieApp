@@ -38,7 +38,9 @@ class PagesController
 
     echo App::get('twig')->render('now_playing.html', [
       'complex'=>$complex[0],
-      'movies_now_playing'=>$movies_now_playing
+      'movies_now_playing'=>$movies_now_playing,
+      'loggedin'=>isset($_SESSION['user']),
+      'user'=>$_SESSION['user']
     ]);
   }
 
@@ -58,6 +60,12 @@ class PagesController
     $complex = App::get('database')->get('complex', ['id'=>$query['complex']]);
     $movie = App::get('database')->get('movie', ['id'=>$query['movie']]);
 
-    echo App::get('twig')->render('view_showtimes.html', compact('showtimes', 'complex', 'movie'));
+    $loggedin = isset($_SESSION['user']);
+    $user = $_SESSION['user'];
+
+    echo App::get('twig')->render(
+      'view_showtimes.html',
+      compact('showtimes', 'complex', 'movie', 'loggedin', 'user'
+    ));
   }
 }
