@@ -53,7 +53,11 @@ class PagesController
             )";
 
     $params = ['complex'=>$query['complex'], 'movie'=>$query['movie']];
+
     $showtimes = App::get('database')->raw($sql, $params);
-    dd($showtimes);
+    $complex = App::get('database')->get('complex', ['id'=>$query['complex']]);
+    $movie = App::get('database')->get('movie', ['id'=>$query['movie']]);
+
+    echo App::get('twig')->render('view_showtimes.html', compact('showtimes', 'complex', 'movie'));
   }
 }

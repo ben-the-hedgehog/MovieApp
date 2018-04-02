@@ -1,0 +1,28 @@
+{% extends 'partials/base.html' %}
+
+{% block title %}
+  Showtimes for {{ movie.title }} at {{ complex.name }}
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <h2 class="display-4">
+      Showtimes for {{ movie.title }} at {{ complex.name }}
+    </h2>
+    <hr class="my-4">
+  </div>
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <ul class="list-group">
+        {% for showtime in showtimes %}
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <time> {{ showtime.start_time }} </time>
+          <label class="text-justify"> Theatre {{ showtime.theatre_num }} </label>
+          <label class="text-justify>"> Screen size: {{ showtime.screen_size }} </label>
+          <span class="badge badge-primary badge-pill">{{ showtime.seats_left }}</span>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+{% endblock %}
