@@ -20,14 +20,14 @@ App::bind('twig', new Twig_Environment($loader));
 
 # Helper Functions
 
-function formatConditional($conditions)
+function formatConditional($conditions, $separator)
 {
     $conditionString = '';
     foreach(array_keys($conditions) as $key) {
-        $conditionString = $conditionString . ' and ' . $key . '= :' . $key;
+        $conditionString = $conditionString . " $separator " . $key . '= :' . $key;
     }
 
-    return preg_replace('/^ and /', '', $conditionString);
+    return preg_replace("/^ $separator /", '', $conditionString);
 }
 
 function redirect($path)

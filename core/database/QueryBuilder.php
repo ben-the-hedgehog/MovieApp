@@ -43,7 +43,7 @@ class QueryBuilder
 
   public function delete($table, $conditions)
   {
-      $conditionString = formatConditional($conditions);
+      $conditionString = formatConditional($conditions, 'AND');
 
       $query = sprintf(
           "delete from %s where(%s)",
@@ -61,7 +61,7 @@ class QueryBuilder
 
   public function filter($table, $conditions)
   {
-    $conditionString = formatConditional($conditions);
+    $conditionString = formatConditional($conditions, 'AND');
 
     $query = sprintf(
         "select * from %s where(%s)",
@@ -81,7 +81,7 @@ class QueryBuilder
 
   public function get($table, $conditions)
   {
-    $conditionString = formatConditional($conditions);
+    $conditionString = formatConditional($conditions, 'AND');
 
     $query = sprintf(
         "select * from %s where(%s)",
@@ -101,8 +101,8 @@ class QueryBuilder
 
   public function update($table, $values, $conditions)
   {
-    $conditionString = formatConditional($conditions);
-    $setValueString = formatConditional($values);
+    $conditionString = formatConditional($conditions, 'AND');
+    $setValueString = formatConditional($values, ',');
 
     $query = sprintf(
       "update %s set %s where %s",
@@ -110,10 +110,9 @@ class QueryBuilder
       $setValueString,
       $conditionString
     );
-
     //never have overlapping attributes in values and conditions
     $merged = $values + $conditions;
-
+    dd($merged);
     try {
         $statement = $this->pdo->prepare($query);
         $statement->execute($merged);

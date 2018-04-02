@@ -62,4 +62,25 @@ class UserController
 
     echo App::get('twig')->render('user_profile.html', compact('loggedin', 'user'));
   }
+
+  public function updateProfile()
+  {
+    redirectIfNotLoggedin('');
+    $user = $_SESSION['user'];
+
+    $email = htmlspecialchars($_POST['email']);
+    $password = htmlspecialchars($_POST['password']);
+    $fname = htmlspecialchars($_POST['fname']);
+    $lname = htmlspecialchars($_POST['lname']);
+    $cc_number = htmlspecialchars($_POST['cc_number']);
+    $cc_expiry = htmlspecialchars($_POST['cc_expiry']);
+
+    App::get('database')->update(
+      'user',
+      compact('email', 'password', 'fname', 'lname', 'cc_number', 'cc_expiry'),
+      ['account_no'=>$user->account_no]
+    );
+
+    redirect('user/profile');
+  }
 }
