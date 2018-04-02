@@ -13,8 +13,8 @@ class UserController
       $email = $_POST['email'];
       $password = $_POST['password'];
 
-      $user = App::get('database')->filter('user', compact('email', 'password'));
-      if( $user === [] )
+      $user = App::get('database')->get('user', compact('email', 'password'));
+      if( $user == FALSE )
       {
         return redirect('login');
       }
