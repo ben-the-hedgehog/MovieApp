@@ -95,4 +95,27 @@ class PagesController
       compact('user', 'loggedin', 'showtime')
     );
   }
+
+  public function browseMovies()
+  {
+    $now_playing = App::get('database')->raw(
+      'select * from now_playing group by movie'
+    );
+
+    $all_movies = App::get('database')->selectAll('movie');
+
+    $movies_now_playing = [];
+
+    foreach($now_playing as $np)
+    {
+      $movies_now_playing[] = App::get('database')->get('movie', ['id'=>$np->movie]);
+    }
+
+    echo App::get('twig')->render('browse_movies.html', [
+      'movies_now_playing'=>$movies_now_playing,
+      'all_movies'=>$all_movies,
+      'loggedin'=>isset($_SESSION['user']),
+      'user'=>$_SESSION['user']
+    ]);
+  }
 }

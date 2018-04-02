@@ -1,0 +1,58 @@
+{% extends 'partials/base.html' %}
+
+{% block title %}
+Movies
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <br>
+  <h1 class="display-4">Browse Movies</h1>
+  <hr class="my-4">
+</div>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h3 class="display-6">Now Playing in Theatres</h3>
+    <hr class="my-4">
+    <div class="row">
+      {% for movie in movies_now_playing %}
+        <div class="col-md-3 mr-sm-4">
+          <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">{{ movie.title }}</h5>
+              <p class="card-text">{{ movie.synopsis }}</p>
+              <form method="get" action="/movies/review">
+                <input type="hidden" name="movie" value="{{ movie.id }}">
+                <button type="submit" class="btn btn-warning">Review This Movie</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h3 class="display-6">All Movies</h3>
+    <hr class="my-4">
+    <div class="row">
+      {% for movie in all_movies %}
+        <div class="col-md-3 mr-sm-4">
+          <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">{{ movie.title }}</h5>
+              <p class="card-text">{{ movie.synopsis }}</p>
+              <form method="get" action="/movies/review">
+                <input type="hidden" name="movie" value="{{ movie.id }}">
+                <button type="submit" class="btn btn-warning">Review This Movie</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% endblock %}
