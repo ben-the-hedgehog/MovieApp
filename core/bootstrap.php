@@ -46,6 +46,18 @@ function redirectIfNotLoggedin($path)
     return $loggedin;
 }
 
+function redirectIfNotAdmin($path)
+{
+  redirectIfNotLoggedin('');
+  $is_admin = $_SESSION['user']->is_admin;
+
+  if(! $is_admin){
+    redirect($path);
+  }
+
+  return $is_admin;
+}
+
 function dd($var)
 {
   die(var_dump($var));

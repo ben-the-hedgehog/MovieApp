@@ -1,0 +1,55 @@
+{% extends 'partials/base.html' %}
+
+{% block title %}
+  Administration
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <h1 class="display-6">Users</h1>
+      <ul class="list-group" style="overflow:scroll">
+        {% for user in all_users %}
+        <form class="list-group-item" action="/admin/manageuser" method="get">
+          <p>{{user.account_no}} - {{user.email}}</p>
+          <p> Name: {{user.fname}} {{user.lname}}</p>
+          <input type="hidden" name="user_id" value="{{ user.account_no }}">
+          <button type="submit" class="btn btn-success">Edit</button>
+        </form>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="col-md-4">
+      <h1 class="display-6">Movies</h1>
+      <ul class="list-group" style="overflow:scroll">
+        {% for movie in all_movies %}
+        <form class="list-group-item" action="/admin/managemovie" method="get">
+          <p>{{movie.id}} - {{movie.title}}</p>
+          <p>Rating: {{movie.rating}}</p>
+          <input type="hidden" name="movie_id" value="{{ movie.id }}">
+          <button type="submit" class="btn btn-success">Edit</button>
+        </form>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="col-md-4">
+      <h1 class="display-6">Complexes</h1>
+      <ul class="list-group" style="overflow:scroll">
+        {% for complex in all_complexes %}
+        <form class="list-group-item" action="/admin/managecomplex" method="get">
+          <p>{{complex.id}} - {{complex.name}}</p>
+          <p>City: {{complex.city}}</p>
+          <input type="hidden" name="complex_id" value="{{ complex.id }}">
+          <button type="submit" class="btn btn-success">Edit</button>
+        </form>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -63,7 +63,7 @@ CREATE TABLE user(
 	fname VARCHAR(20) NOT NULL,
 	lname VARCHAR(20) NOT NULL,
 	is_admin BOOLEAN NOT NULL DEFAULT 0,
-	email VARCHAR(20) NOT NULL,
+	email VARCHAR(40) NOT NULL,
 	cc_number VARCHAR(19),
 	cc_expiry VARCHAR(4),
 
@@ -86,7 +86,7 @@ CREATE TABLE showtime(
 	theatre INT,
 	movie INT,
 	start_time DATETIME NOT NULL,
-	seats_left INT NOT NULL,
+	seats_booked INT NOT NULL,
 
 	PRIMARY KEY(id),
 	FOREIGN KEY(theatre) REFERENCES theatre(id),

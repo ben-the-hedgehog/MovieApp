@@ -15,3 +15,4 @@ $router->get('bookings/mybookings', 'BookingController@viewBookings');
 $router->post('bookings/cancel', 'BookingController@cancelBooking');
 $router->get('user/profile', 'UserController@viewProfile');
 $router->post('user/update', 'UserController@updateProfile');
+$router->get('admin/home', 'AdminController@home');
